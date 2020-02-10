@@ -6,6 +6,8 @@ edition = "2018"
 
 [dependencies]
 pyo3 = { version = "0.8.5", features = ["extension-module"] }
+boxcars = "0.6.2"
+serde_json = "1.0.47"
 
 [lib]
 name = "boxcars_py"

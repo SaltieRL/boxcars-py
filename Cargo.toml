@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["Justus K <justus.k@protonmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+pyo3 = { version = "0.8.5", features = ["extension-module"] }
+
+[lib]
+name = "boxcars_py"
+crate-type = ["cdylib"]

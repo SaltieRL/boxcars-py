@@ -30,9 +30,5 @@ jobs:
       - name: build
         run: |
           python setup.py bdist_wheel
-      - name: pip-install-wheel
-        run: |
-          pip debug --verbose
-          pip install dist/boxcars_py*.whl
       - name: test-python
         run: python setup.py pytest

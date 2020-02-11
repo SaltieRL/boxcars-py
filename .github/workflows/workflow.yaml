@@ -1,0 +1,43 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macOS-latest, windows-latest]
+        python-version: [3.6, 3.7]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Setup Rust environment
+        uses: actions-rs/toolchain@v1
+        with:
+            profile: minimal
+            toolchain: nightly
+            override: true
+      - name: Setup Python environment
+        uses: actions/setup-python@v1.1.1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: py-deps
+        run: |
+          pip install --upgrade pip
+          pip install setuptools setuptools-rust pytest
+      - name: build
+        run: |
+          python setup.py build
+      - uses: actions/upload-artifact@v1
+        name: upload-wheel
+        with:
+          name: *.whl
+          path: dist/
+      - name: pip-install-wheel
+        run: |
+          pip debug --verbose
+          pip install dist/boxcars_py*.whl
+      - name: test-python
+        run: python setup.py pytest

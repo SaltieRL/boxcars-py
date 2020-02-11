@@ -1,10 +1,8 @@
 #!/usr/bin/env python
-import sys
-
 from setuptools import setup
-from setuptools_rust import RustExtension, Binding
+from setuptools_rust import Binding, RustExtension
 
-setup_requires = ["setuptools-rust"]
+setup_requires = ["setuptools-rust", "pytest-runner"]
 install_requires = []
 
 setup(
@@ -17,6 +15,7 @@ setup(
     ],
     rust_extensions=[RustExtension("boxcars_py", path="Cargo.toml", binding=Binding.PyO3, debug=False)],
     install_requires=install_requires,
+    tests_require=["pytest"],
     setup_requires=setup_requires,
     include_package_data=True,
     zip_safe=False,

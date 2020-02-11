@@ -1,14 +1,36 @@
-MATURIN=maturin
-TOX=tox
+SHELL := /bin/bash
 
-build:
-	$(MATURIN) build
+.PHONY: build
+build: nightly dev-packages
+	poetry run maturin build
 
-develop:
-	$(MATURIN) develop
+.PHONY: build-release
+build-release: nightly dev-packages
+	poetry run maturin build --release
 
+.PHONY: nightly
+nightly:
+	rustup override set nightly
+
+.PHONY: install
+install: nightly dev-packages
+	poetry run maturin develop --release
+
+.PHONY: publish
 publish:
-	$(MATURIN) develop
+	poetry run maturin publish
 
-test:
-	$(TOX)
+.PHONY: clean
+clean:
+	cargo clean
+
+.PHONY: dev-packages
+dev-packages:
+	poetry install
+
+.PHONY: test
+test: dev-packages install quicktest
+
+.PHONY: quicktest
+quicktest:
+	poetry run pytest tests

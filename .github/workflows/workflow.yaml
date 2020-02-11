@@ -30,11 +30,6 @@ jobs:
       - name: build
         run: |
           python setup.py bdist_wheel
-      - uses: actions/upload-artifact@v1
-        name: upload-wheel
-        with:
-          name: boxcars_py-${{ matrix.platform }}
-          path: dist/*.whl
       - name: pip-install-wheel
         run: |
           pip debug --verbose

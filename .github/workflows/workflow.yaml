@@ -28,8 +28,7 @@ jobs:
           pip install maturin tox
       - name: build
         run: |
-          maturin list-python
-          maturin build --release
+          maturin build --release -i $(which python)
       - uses: actions/upload-artifact@v1
         name: upload-wheel
         with:

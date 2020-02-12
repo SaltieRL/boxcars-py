@@ -28,11 +28,11 @@ replay = parse_replay(buf)
 
 __Requirements__
   - Rust Nightly. Minium supported version: 1.42.0-nightly 2020-01-21
-  - [maturin](https://pypi.org/project/maturin/)
-  - [tox](https://pypi.org/project/tox) for testing
+  - [poetry](https://pypi.org/project/poetry/)
 
 ```
+# Install dependencies
+poetry install
+# Build
 make
-# make develop will install the crate in the current virtualenv
-make develop
 ```

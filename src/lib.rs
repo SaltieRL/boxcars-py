@@ -27,7 +27,7 @@ fn to_py_error<E: std::error::Error>(e: E) -> PyErr {
 fn convert_to_py(py: Python, value: &Value) -> PyObject {
     match value {
         Value::Null => py.None(),
-        Value::Bool(b) => PyObject::from_py(b.clone(), py),
+        Value::Bool(b) => PyObject::from_py(*b, py),
         Value::Number(n) => match n {
             n if n.is_u64() => n.as_u64().unwrap().into_py(py),
             n if n.is_i64() => n.as_i64().unwrap().into_py(py),

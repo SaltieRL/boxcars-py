@@ -17,6 +17,7 @@ jobs:
         with:
           toolchain: nightly
           override: true
+          components: "clippy, rustfmt"
 
       - name: Lint with rustfmt
         uses: actions-rs/cargo@v1

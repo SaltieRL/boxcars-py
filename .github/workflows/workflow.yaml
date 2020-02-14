@@ -63,7 +63,7 @@ jobs:
         run: poetry run maturin develop --release
 
       - name: pytest
-        run: poetry run pytest tests
+        run: poetry run pytest --benchmark-skip tests
 
   python-publish:
     needs: build

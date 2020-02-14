@@ -31,6 +31,10 @@ dev-packages:
 .PHONY: test
 test: dev-packages install quicktest
 
+.PHONY: bench
+bench: dev-packages install
+	poetry run pytest --benchmark-compare --benchmark-only tests
+
 .PHONY: quicktest
 quicktest:
-	poetry run pytest tests
+	poetry run pytest --benchmark-skip tests

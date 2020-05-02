@@ -1,12 +1,14 @@
 SHELL := /bin/bash
+MATURIN := maturin
+PYTHON := $(shell which python)
 
 .PHONY: build
 build: nightly dev-packages
-	poetry run maturin build
+	poetry run $(MATURIN) build --interpreter $(PYTHON)
 
 .PHONY: build-release
 build-release: nightly dev-packages
-	poetry run maturin build --release
+	poetry run $(MATURIN) build --release --interpreter $(PYTHON)
 
 .PHONY: nightly
 nightly:
@@ -14,11 +16,11 @@ nightly:
 
 .PHONY: install
 install: nightly dev-packages
-	poetry run maturin develop --release
+	poetry run $(MATURIN) develop --release  --interpreter $(PYTHON)
 
 .PHONY: publish
 publish:
-	poetry run maturin publish
+	poetry run $MATURIN publish --interpreter $(PYTHON)
 
 .PHONY: clean
 clean:

@@ -93,27 +93,6 @@ jobs:
           pip install poetry
           poetry install
 
-      - name: Build Python package
-        run: poetry run maturin build --release --no-sdist --strip --interpreter python${{matrix.python_version}}
-
-      - name: List wheels
-        if: matrix.os == 'windows-latest'
-        run: dir target\wheels\
-
-      - name: List wheels
-        if:  matrix.os != 'windows-latest'
-        run: find ./target/wheels/
-
-      # Note: Windows doesn't support glob
-      # https://stackoverflow.com/a/52481267/270334
-      - name: Install wheels
-        if:  matrix.os == 'windows-latest'
-        run: pip install --find-links=target\wheels hyperjson
-
-      - name: Install wheels
-        if:  matrix.os != 'windows-latest'
-        run: pip install target/wheels/boxcars_py*.whl
-
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -124,4 +103,4 @@ jobs:
       - name: PyPi publish
         env:
           MATURIN_PASSWORD: ${{ secrets.PYPI }}
-        run: poetry run maturin publish --username __token__
+        run: make publish

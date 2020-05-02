@@ -20,7 +20,7 @@ install: nightly dev-packages
 
 .PHONY: publish
 publish:
-	poetry run $MATURIN publish --interpreter $(PYTHON)
+	poetry run $(MATURIN) publish --username __token__ --interpreter $(PYTHON)
 
 .PHONY: clean
 clean:

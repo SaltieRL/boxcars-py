@@ -16,7 +16,7 @@ nightly:
 
 .PHONY: install
 install: nightly dev-packages
-	poetry run $(MATURIN) develop --release  --interpreter $(PYTHON)
+	poetry run $(MATURIN) develop --release
 
 .PHONY: publish
 publish:

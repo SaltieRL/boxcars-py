@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 MATURIN := maturin
-PYTHON := $(shell which python)
+PYTHON := python
 
 .PHONY: build
 build: nightly dev-packages

@@ -6,6 +6,7 @@ use std::collections::BTreeMap;
 #[pyfunction]
 fn parse_replay<'p>(py: Python<'p>, data: &[u8]) -> PyResult<PyObject> {
     let replay = boxcars::ParserBuilder::new(data)
+        .must_parse_network_data()
         .on_error_check_crc()
         .parse()
         .map_err(to_py_error)?;

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "boxcars_py"
-version = "0.1.6"
+version = "0.1.7"
 description = "Python bindings for the Rocket League replay parser boxcars."
 authors = ["Justus K <justus.k@pm.me>", "Matthew Mage <sciguymjm@gmail.com>"]
 license = "MIT"

@@ -1,6 +1,6 @@
 [package]
 name = "boxcars-py"
-version = "0.1.6"
+version = "0.1.8"
 authors = ["Justus K <justus.k@protonmail.com>", "Matthew Mage <sciguymjm@gmail.com>"]
 edition = "2018"
 

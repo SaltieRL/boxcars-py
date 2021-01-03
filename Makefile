@@ -3,19 +3,15 @@ MATURIN := maturin
 PYTHON := python
 
 .PHONY: build
-build: nightly dev-packages
+build: dev-packages
 	poetry run $(MATURIN) build --interpreter $(PYTHON)
 
 .PHONY: build-release
-build-release: nightly dev-packages
+build-release: dev-packages
 	poetry run $(MATURIN) build --release --interpreter $(PYTHON)
 
-.PHONY: nightly
-nightly:
-	rustup override set nightly
-
 .PHONY: install
-install: nightly dev-packages
+install: dev-packages
 	poetry run $(MATURIN) develop --release
 
 .PHONY: publish

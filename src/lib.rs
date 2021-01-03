@@ -22,13 +22,13 @@ fn boxcars_py(_py: Python, m: &PyModule) -> PyResult<()> {
 }
 
 fn to_py_error<E: std::error::Error>(e: E) -> PyErr {
-    PyErr::new::<exceptions::Exception, _>(format!("{}", e))
+    PyErr::new::<exceptions::PyException, _>(format!("{}", e))
 }
 
 fn convert_to_py(py: Python, value: &Value) -> PyObject {
     match value {
         Value::Null => py.None(),
-        Value::Bool(b) => PyObject::from_py(*b, py),
+        Value::Bool(b) => b.into_py(py),
         Value::Number(n) => match n {
             n if n.is_u64() => n.as_u64().unwrap().into_py(py),
             n if n.is_i64() => n.as_i64().unwrap().into_py(py),

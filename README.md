@@ -27,7 +27,7 @@ replay = parse_replay(buf)
 ## Building from source
 
 __Requirements__
-  - Rust Nightly. Minium supported version: 1.42.0-nightly 2020-01-21
+  - Rust.
   - [poetry](https://pypi.org/project/poetry/)
 
 ```

@@ -1,6 +1,6 @@
 [package]
 name = "boxcars-py"
-version = "0.1.13"
+version = "0.1.14"
 authors = ["Justus K <justus.k@protonmail.com>", "Matthew Mage <sciguymjm@gmail.com>"]
 edition = "2018"
 
@@ -18,7 +18,7 @@ classifier = [
 ]
 
 [dependencies]
-boxcars = "0.9.2"
+boxcars = "0.9.3"
 serde_json = "1.0.52"
 
 [dependencies.pyo3]

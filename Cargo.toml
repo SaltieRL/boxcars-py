@@ -18,7 +18,7 @@ classifier = [
 ]
 
 [dependencies]
-boxcars = "0.9.4"
+boxcars = "0.9.8"
 serde_json = "1.0.52"
 
 [dependencies.pyo3]

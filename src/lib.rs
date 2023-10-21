@@ -4,7 +4,7 @@ use serde_json::Value;
 use std::collections::BTreeMap;
 
 #[pyfunction]
-fn parse_replay<'p>(py: Python<'p>, data: &[u8]) -> PyResult<PyObject> {
+fn parse_replay(py: Python, data: &[u8]) -> PyResult<PyObject> {
     let replay = boxcars::ParserBuilder::new(data)
         .must_parse_network_data()
         .on_error_check_crc()
@@ -22,7 +22,7 @@ fn boxcars_py(_py: Python, m: &PyModule) -> PyResult<()> {
 }
 
 fn to_py_error<E: std::error::Error>(e: E) -> PyErr {
-    PyErr::new::<exceptions::PyException, _>(format!("{}", e))
+    PyErr::new::<exceptions::PyException, _>(format!("{e}"))
 }
 
 fn convert_to_py(py: Python, value: &Value) -> PyObject {

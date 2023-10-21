@@ -16,3 +16,7 @@ features = ["extension-module", "abi3-py37"]
 [lib]
 name = "boxcars_py"
 crate-type = ["cdylib"]
+
+[profile.release]
+strip = true
+lto = true

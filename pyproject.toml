@@ -1,18 +1,36 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "boxcars_py"
-version = "0.1.14"
+version = "0.1.16"
 description = "Python bindings for the Rocket League replay parser boxcars."
 authors = ["Justus K <justus.k@pm.me>", "Matthew Mage <sciguymjm@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/SaltieRL/BoxcarWrapper"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python",
+    "Programming Language :: Rust",
+]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-pytest = "^3.5"
+pytest = "^7"
 wheel = "*"
 pytest-runner = "*"
-pytest-benchmark = "3.2.3"
-maturin = "0.7.7"
+pytest-benchmark = "^4"
+maturin = "1.*"

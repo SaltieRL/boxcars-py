@@ -1,30 +1,23 @@
 [package]
 name = "boxcars-py"
-version = "0.1.15"
+version = "0.1.16"
 authors = ["Justus K <justus.k@protonmail.com>", "Matthew Mage <sciguymjm@gmail.com>"]
-edition = "2018"
-
-[package.metadata.maturin]
-classifier = [
-    "Intended Audience :: Developers",
-    "Operating System :: MacOS",
-    "Operating System :: Microsoft :: Windows",
-    "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python",
-    "Programming Language :: Rust",
-]
+edition = "2021"
+exclude = [".*", "tests/", "Makefile"]
 
 [dependencies]
-boxcars = "0.9.4"
-serde_json = "1.0.52"
+boxcars = "0.9.10"
+serde_json = "1.0.107"
 
 [dependencies.pyo3]
-version = "0.13.0"
-features = ["extension-module"]
+version = "0.20.0"
+features = ["extension-module", "abi3-py37"]
 
 [lib]
 name = "boxcars_py"
 crate-type = ["cdylib"]
+
+[profile.release]
+strip = true
+lto = true
+panic = "abort"
